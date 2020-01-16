@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-# Utility for creating well-formed pull request merges and pushing them to Registry.
+# Utility for creating well-formed pull HTTPRequest merges and pushing them to Registry.
 #   usage: ./merge_registry_pr.py    (see config env vars below)
 #
 # This script is inspired by Spark merge script and also borrow some codes from Kafka.
@@ -40,7 +40,7 @@ PR_REMOTE_NAME = os.environ.get("PR_REMOTE_NAME", "pull-repo")
 PUSH_REMOTE_NAME = os.environ.get("PUSH_REMOTE_NAME", "push-repo")
 # OAuth key used for issuing requests against the GitHub API. If this is not defined, then requests
 # will be unauthenticated. You should only need to configure this if you find yourself regularly
-# exceeding your IP's unauthenticated request rate limit. You can create an OAuth key at
+# exceeding your IP's unauthenticated HTTPRequest rate limit. You can create an OAuth key at
 # https://github.com/settings/tokens. This script only requires the "public_repo" scope.
 GITHUB_OAUTH_KEY = os.environ.get("GITHUB_OAUTH_KEY")
 
@@ -53,10 +53,10 @@ BRANCH_PREFIX = "PR_TOOL"
 
 def get_json(url):
     try:
-        request = urllib2.Request(url)
+        HTTPRequest = urllib2.Request(url)
         if GITHUB_OAUTH_KEY:
-            request.add_header('Authorization', 'token %s' % GITHUB_OAUTH_KEY)
-        return json.load(urllib2.urlopen(request))
+            HTTPRequest.add_header('Authorization', 'token %s' % GITHUB_OAUTH_KEY)
+        return json.load(urllib2.urlopen(HTTPRequest))
     except urllib2.HTTPError as e:
         if "X-RateLimit-Remaining" in e.headers and e.headers["X-RateLimit-Remaining"] == '0':
             message = "Exceeded the GitHub API rate limit; see the instructions in " +\
@@ -157,7 +157,7 @@ def merge_pr(pr_num, target_ref, title, body, reviewers, pr_repo_desc):
         merge_message_flags += ["-m", message]
 
     if len(commits) > 1:
-        result = raw_input("List pull request commits in squashed commit message? (y/n) [n]: ")
+        result = raw_input("List pull HTTPRequest commits in squashed commit message? (y/n) [n]: ")
         if result.lower() == "y":
             should_list_commits = True
         else:
@@ -194,7 +194,7 @@ def merge_pr(pr_num, target_ref, title, body, reviewers, pr_repo_desc):
 
     merge_hash = run_cmd("git rev-parse %s" % target_branch_name)[:8]
     clean_up()
-    print("Pull request #%s merged!" % pr_num)
+    print("Pull HTTPRequest #%s merged!" % pr_num)
     print("Merge hash: %s" % merge_hash)
     return merge_hash
 
@@ -221,12 +221,12 @@ def main():
     remotes = get_remotes()
 
     if not PR_REMOTE_NAME in remotes:
-      fail("Remote for pull request [%s] not registered" % PR_REMOTE_NAME)
+      fail("Remote for pull HTTPRequest [%s] not registered" % PR_REMOTE_NAME)
 
     if not PUSH_REMOTE_NAME in remotes:
       fail("Remote for push [%s] not registered" % PUSH_REMOTE_NAME)
 
-    pr_num = raw_input("Which pull request would you like to merge? (e.g. 34): ")
+    pr_num = raw_input("Which pull HTTPRequest would you like to merge? (e.g. 34): ")
     pr = get_json("%s/pulls/%s" % (GITHUB_API_BASE, pr_num))
 
     url = pr["url"]
@@ -263,14 +263,14 @@ def main():
         fail("The state of PR is not 'open'. We don't want to deal with closed PR.")
 
     if not bool(pr["mergeable"]):
-        msg = "Pull request %s is not mergeable in its current form.\n" % pr_num + \
+        msg = "Pull HTTPRequest %s is not mergeable in its current form.\n" % pr_num + \
             "Continue? (experts only!)"
         continue_maybe(msg)
 
     print("\n=== Pull Request #%s ===" % pr_num)
     print("title\t%s\nsource\t%s\ntarget\t%s\nurl\t%s" %
           (title, pr_repo_desc, target_ref, url))
-    continue_maybe("Proceed with merging pull request #%s?" % pr_num)
+    continue_maybe("Proceed with merging pull HTTPRequest #%s?" % pr_num)
 
     review_comments = get_json("%s/pulls/%s/reviews" % (GITHUB_API_BASE, pr_num))
 

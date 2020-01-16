@@ -17,17 +17,25 @@
 package com.hortonworks.registries.schemaregistry.client;
 
 import javax.ws.rs.client.WebTarget;
+import java.util.Objects;
 
-public abstract class GetRequest<T> extends Request<T> {
+public abstract class HTTPPostRequest<T> extends HTTPRequest<T> {
 
-    public GetRequest(WebTarget target, Class<T> clazz) {
+    private Object payload;
+
+    public HTTPPostRequest(WebTarget target, Object payload, Class<T> clazz) {
         super(target, clazz);
+
+        Objects.requireNonNull(payload, "payload can't be null");
+
+        this.payload = payload;
     }
 
     @Override
     public T request() {
-        return apply(target, responseType);
+        return apply(target, payload, responseType);
     }
 
-    public abstract T apply(WebTarget target, Class<T> clazz);
+    public abstract T apply(WebTarget target, Object payload, Class<T> clazz);
+
 }

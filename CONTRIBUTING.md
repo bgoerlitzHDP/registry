@@ -12,7 +12,7 @@ If you submit a CCLA and then change jobs, please submit a new CCLA for your new
 
 Find an issue that you would like to work on, or file one if you have discovered something new. If no one is working on the issue, assign it to yourself only if you intend to work on it shortly.
 
-Except for the very smallest items, it’s a very good idea to discuss your intended approach in the comment stream of the issue. You are much more likely to have your pull request reviewed and committed if you’ve already gotten buy-in from the rest of the community before you start.
+Except for the very smallest items, it’s a very good idea to discuss your intended approach in the comment stream of the issue. You are much more likely to have your pull HTTPRequest reviewed and committed if you’ve already gotten buy-in from the rest of the community before you start.
 
 ## Fix
 
@@ -28,6 +28,6 @@ Finally, please write a good, clear commit message, with a short, descriptive ti
 
 ## Submit
 
-When the changes are ready to go, submit a pull request against the main repository from the branch on your fork. To help get attention from the community, assign reviewers to the pull request that you have been communicating with and who have permission to merge pull requests. Work with reviewers to make any necessary final adjustments to your work. When the discussion is complete, your pull request will be merged. Congratulations!
+When the changes are ready to go, submit a pull HTTPRequest against the main repository from the branch on your fork. To help get attention from the community, assign reviewers to the pull HTTPRequest that you have been communicating with and who have permission to merge pull requests. Work with reviewers to make any necessary final adjustments to your work. When the discussion is complete, your pull HTTPRequest will be merged. Congratulations!
 
 Once your changes are merged, Cloudera staff will import them into the copies maintained along with Cloudera Schema Registry code itself, so that later versions of Cloudera Schema Registry will automatically include them.

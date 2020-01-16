@@ -92,12 +92,12 @@ above:
    allow negotiation for that website
 
 **Caution**: In AD MIT Kerberos setup, the key size is bigger than the
-default UI jetty server request header size. If using MIT Kerberos with
+default UI jetty server HTTPRequest header size. If using MIT Kerberos with
 jettty server, make sure you set HTTP header buffer bytes to 65536
 
 SPNEGO+BASIC
 ------------
-SPNEGO Authentication handler can be extended to support Kerberos credentials based Basic Authentication as long as the incoming HTTP request
+SPNEGO Authentication handler can be extended to support Kerberos credentials based Basic Authentication as long as the incoming HTTP HTTPRequest
 is secure and the HTTP method is POST. If a user provides user credentials in a HTTPS, POST call under Authorization Header, then a Kerberos
 login is attempted. In the authentication failure scenario, the SPNEGO sequence is invoked.
 

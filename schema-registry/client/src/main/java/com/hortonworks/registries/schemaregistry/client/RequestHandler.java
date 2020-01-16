@@ -31,7 +31,7 @@ public class RequestHandler {
         return this;
     }
 
-    public <T> T request(Request<T> request) {
+    public <T> T request(HTTPRequest<T> HTTPRequest) {
         RetryPolicyInput input = new RetryPolicyInput(0, System.currentTimeMillis());
         RetryPolicyOutput output = null;
         T result = null;
@@ -39,8 +39,8 @@ public class RequestHandler {
         do {
             try {
                 output = retryPolicy.checkIfRetryRequired(input);
-                request.maybeUpdateTarget(output.target());
-                result = request.request();
+                HTTPRequest.maybeUpdateTarget(output.target());
+                result = HTTPRequest.request();
             } catch (Exception e) {
                 exception = e;
             }

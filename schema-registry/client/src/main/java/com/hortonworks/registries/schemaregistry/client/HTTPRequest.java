@@ -19,12 +19,12 @@ package com.hortonworks.registries.schemaregistry.client;
 import javax.ws.rs.client.WebTarget;
 import java.util.Objects;
 
-public abstract class Request<T> {
+public abstract class HTTPRequest<T> {
 
     protected WebTarget target;
     protected Class<T> responseType;
 
-    public Request(WebTarget target, Class<T> responseType) {
+    public HTTPRequest(WebTarget target, Class<T> responseType) {
         Objects.requireNonNull(target, "target can't be null");
         Objects.requireNonNull(responseType, "responseType can't be null");
 
@@ -39,4 +39,5 @@ public abstract class Request<T> {
     }
 
     public abstract T request();
+
 }

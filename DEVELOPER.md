@@ -10,8 +10,8 @@ Table of Contents
 * <a href="#workflow-and-policies">Workflows</a>
     * <a href="#coding-guidelines">Coding Guidelines</a>
     * <a href="#contribute-code">Contribute code</a>
-        * <a href="#create-pull-request">Create a pull request</a>
-        * <a href="#merge-pull-request">Merge a pull request or patch</a>
+        * <a href="#create-pull-HTTPRequest">Create a pull HTTPRequest</a>
+        * <a href="#merge-pull-HTTPRequest">Merge a pull HTTPRequest or patch</a>
     * <a href="#building">Build the code and run the tests</a>
 * <a href="#best-practices">Best practices</a>
     * <a href="#best-practices-testing">Testing</a>
@@ -24,7 +24,7 @@ Table of Contents
 
 # Workflows
 
-This section explains how to perform common activities such as reporting a bug or merging a pull request.
+This section explains how to perform common activities such as reporting a bug or merging a pull HTTPRequest.
 
 <a name="coding-guidelines"></a>
 
@@ -87,31 +87,31 @@ This section explains how to perform common activities such as reporting a bug o
 
 ## Contribute code
 
-<a name="create-pull-request"></a>
+<a name="create-pull-HTTPRequest"></a>
 
-### Create a pull request
+### Create a pull HTTPRequest
 
 Pull requests should be done against the read-only git repository at
 [https://github.com/hortonworks/registry](https://github.com/hortonworks/registry).
 
-Take a look at [Creating a pull request](https://help.github.com/articles/creating-a-pull-request).  In a nutshell you
+Take a look at [Creating a pull HTTPRequest](https://help.github.com/articles/creating-a-pull-HTTPRequest).  In a nutshell you
 need to:
 
 1. [Fork](https://help.github.com/articles/fork-a-repo) the Registry GitHub repository at
    [https://github.com/hortonworks/registry/](https://github.com/hortonworks/registry/) to your personal GitHub
    account.  See [Fork a repo](https://help.github.com/articles/fork-a-repo) for detailed instructions.
 2. Commit any changes to your fork.
-3. Send a [pull request](https://help.github.com/articles/creating-a-pull-request) to the Registry GitHub repository
-   that you forked in step 1.  If your pull request is related to an existing Github issue  -- for instance, because
-   you reported a bug report via Github issue earlier -- then prefix the title of your pull request with the corresponding 
+3. Send a [pull HTTPRequest](https://help.github.com/articles/creating-a-pull-HTTPRequest) to the Registry GitHub repository
+   that you forked in step 1.  If your pull HTTPRequest is related to an existing Github issue  -- for instance, because
+   you reported a bug report via Github issue earlier -- then prefix the title of your pull HTTPRequest with the corresponding 
    Github issue number (e.g. `ISSUE-123: ...`).
 
 You may want to read [Syncing a fork](https://help.github.com/articles/syncing-a-fork) for instructions on how to keep
 your fork up to date with the latest changes of the upstream  `Registry` repository.
 
-### The format of pull request
+### The format of pull HTTPRequest
 
-The title of pull request must be standardized as follows:
+The title of pull HTTPRequest must be standardized as follows:
 
 ```
 ISSUE-XXX: Title matching exactly the title of Github issue
@@ -121,7 +121,7 @@ The text immediately following the Github issue number (ISSUE-XXX: ) must be an 
 
 If the title of Github issue does not accurately describe what the patch is addressing, the title of Github issue must be modified, and then copied to the Git commit message.
 
-And the body of pull request is encouraged to be standardized as follows:
+And the body of pull HTTPRequest is encouraged to be standardized as follows:
 
 ```
 - An optional, bulleted (+, -, ., *), summary of the contents of 
@@ -132,14 +132,14 @@ And the body of pull request is encouraged to be standardized as follows:
 
 A summary with the contents of the patch is optional but strongly encouraged if the patch is large and/or the Github title is not expressive enough to describe what the patch is doing. This text must be bulleted using one of the following bullet points (+, -, ., ). There must be at last a 1 space indent before the bullet char, and exactly one space between bullet char and the first letter of the text. Bullets are not optional, but **required**.
 
-<a name="merge-pull-request"></a>
+<a name="merge-pull-HTTPRequest"></a>
 
-### Merge a pull request
+### Merge a pull HTTPRequest
 
-You can utilize merge script to merge a pull request. There're some tasks prior to use the script. 
+You can utilize merge script to merge a pull HTTPRequest. There're some tasks prior to use the script. 
 
 #### CI Build
-Registry is integrated with travis CI. The status of the build for the pending pull request will be reflected in the PR itself. You must see "The Travis CI build passed" in the pull request before merging it.
+Registry is integrated with travis CI. The status of the build for the pending pull HTTPRequest will be reflected in the PR itself. You must see "The Travis CI build passed" in the pull HTTPRequest before merging it.
 
 #### Preparation
 
@@ -157,7 +157,7 @@ $ git remote add push-repo <push repository git url>
 
 #### How to use merge script
 
-All merges should be done using the dev/merge_registry_pr.py script, which squashes the pull request’s changes into one commit. 
+All merges should be done using the dev/merge_registry_pr.py script, which squashes the pull HTTPRequest’s changes into one commit. 
 The script is fairly self explanatory and walks you through steps and options interactively.
 
 Please note that the script prompts for merger after squashed commit is made. Merger can then run the build and do the manual test before pushing, 
